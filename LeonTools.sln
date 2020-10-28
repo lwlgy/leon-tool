@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeonTools", "LeonTools\LeonTools.csproj", "{A77A1AD3-8C91-4546-9D62-6B5892CDB887}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A77A1AD3-8C91-4546-9D62-6B5892CDB887}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A77A1AD3-8C91-4546-9D62-6B5892CDB887}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A77A1AD3-8C91-4546-9D62-6B5892CDB887}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A77A1AD3-8C91-4546-9D62-6B5892CDB887}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,15 @@
+E:\Projects\LeonTools\LeonTools\LeonTools\bin\Debug\LeonTools.exe.config
+E:\Projects\LeonTools\LeonTools\LeonTools\bin\Debug\LeonTools.exe
+E:\Projects\LeonTools\LeonTools\LeonTools\bin\Debug\LeonTools.pdb
+E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\LeonTools.csprojAssemblyReference.cache
+E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\MainWindow.g.cs
+E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\App.g.cs
+E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\LeonTools_MarkupCompile.cache
+E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\LeonTools_MarkupCompile.lref
+E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\MainWindow.baml
+E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\LeonTools.g.resources
+E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\LeonTools.Properties.Resources.resources
+E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\LeonTools.csproj.GenerateResource.cache
+E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\LeonTools.csproj.CoreCompileInputs.cache
+E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\LeonTools.exe
+E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\LeonTools.pdb
