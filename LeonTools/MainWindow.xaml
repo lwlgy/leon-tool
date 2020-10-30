@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:LeonTools"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525" AllowDrop="True">
-    <WrapPanel Name="MainPanel" DragEnter="MainPanel_OnDragEnter" Drop="MainPanel_OnDrop"
-               AllowDrop="True" Background="Blue" />
+    <WrapPanel Name="MainPanel"
+               DragEnter="MainPanel_OnDragEnter"
+               Drop="MainPanel_OnDrop"
+               AllowDrop="True" />
 </Window>

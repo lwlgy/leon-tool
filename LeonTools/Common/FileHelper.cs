@@ -1,4 +1,7 @@
-﻿using System.IO;
+﻿using System.Drawing;
+using System.IO;
+using IWshRuntimeLibrary;
+using File = System.IO.File;
 
 namespace LeonTools.Common
 {
@@ -13,12 +16,23 @@ namespace LeonTools.Common
 
         private static string GetRealPathByShortcut(string shortcut)
         {
-            // IWshShortcut _shortcut = null;
-            // IWshShell_Class shell = new IWshShell_Class();
-            // if (File.Exists(shortcut))
-            //     _shortcut = shell.CreateShortcut(shortcut) as IWshShortcut;
-            // return _shortcut.TargetPath;
+            if (File.Exists(shortcut))
+            {
+                var shell = new WshShell();
+                var wshShortcut = (IWshShortcut) shell.CreateShortcut(shortcut);
+                return wshShortcut.TargetPath;
+            }
+
             return shortcut;
+        }
+
+        public static Icon GetShortcurIcoFromFilePath(string filepath)
+        {
+            if (File.Exists(filepath))
+            {
+                return System.Drawing.Icon.ExtractAssociatedIcon(filepath);
+            }
+            return null;
         }
     }
 }

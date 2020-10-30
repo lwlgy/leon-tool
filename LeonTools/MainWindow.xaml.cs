@@ -1,5 +1,8 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using System.Windows;
+using LeonTools.Common;
+using LeonTools.Model;
 
 namespace LeonTools
 {
@@ -20,14 +23,22 @@ namespace LeonTools
 
         private void MainPanel_OnDrop(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            if (!e.Data.GetDataPresent(DataFormats.FileDrop)) return;
+            var strs = (string[]) e.Data.GetData(DataFormats.FileDrop);
+            if (strs == null || !strs.Any()) return;
+            foreach (var str in strs)
             {
-                var strs = (string[]) e.Data.GetData(DataFormats.FileDrop);
-                if (strs == null || !strs.Any()) return;
-                foreach (var str in strs)
+                var toolItem = new ToolItem
                 {
-                    MessageBox.Show(str);
+                    FileName = str,
+                    Name = Path.GetFileNameWithoutExtension(str)
+                };
+                var icon = FileHelper.GetShortcurIcoFromFilePath(str);
+                if (icon != null)
+                {
+                    toolItem.Icon = IconHelper.ToByte(icon);
                 }
+                
             }
         }
     }
