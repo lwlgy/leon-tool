@@ -30,7 +30,7 @@
                         <Condition Property="IsMouseOver" Value="false" />
                     </MultiTrigger.Conditions>
                     <MultiTrigger.Setters>
-                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="BorderThickness" Value="1"/>
                         <Setter Property="BorderBrush" Value="Transparent" />
                         <!--<Setter Property="Cursor" Value="Arrow" />-->
                     </MultiTrigger.Setters>

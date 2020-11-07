@@ -5,9 +5,11 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Input;
 using System.Windows.Interop;
 using LeonTools.Common;
 using LeonTools.CustomerComponent;
+using LeonTools.Model;
 using LeonTools.ViewModel;
 
 namespace LeonTools
@@ -27,6 +29,8 @@ namespace LeonTools
         private List<ToolItemComponent> toolItemList = new List<ToolItemComponent>();
         private NotifyIcon notifyIcon;
         private string configPath;
+        private string appConfigPath;
+        private bool hasInited = false;
 
         public MainView()
         {
@@ -84,13 +88,22 @@ namespace LeonTools
 
         IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handle)
         {
-            //Debug.WriteLine("hwnd:{0},msg:{1},wParam:{2},lParam{3}:,handle:{4}"
-            //                ,hwnd,msg,wParam,lParam,handle);
             if (wParam.ToInt32() == MY_HOTKEYID)
             {
                 //全局快捷键要执行的命令
-                this.ShowInTaskbar = true;
-                this.Show();
+                if (this.Visibility != Visibility.Visible || this.WindowState != WindowState.Normal || !this.IsActive)
+                {
+                    this.ShowInTaskbar = true;
+                    this.Show();
+                    this.WindowState = WindowState.Normal;
+                    this.Activate();
+                    this.Focus();
+                }
+                else
+                {
+                    this.ShowInTaskbar = false;
+                    this.Hide();
+                }
             }
             return IntPtr.Zero;
         }
@@ -102,6 +115,7 @@ namespace LeonTools
 
         private void MainPanel_OnDrop(object sender, System.Windows.DragEventArgs e)
         {
+
             if (!e.Data.GetDataPresent(System.Windows.DataFormats.FileDrop)) return;
             var strs = (string[])e.Data.GetData(System.Windows.DataFormats.FileDrop);
             if (strs == null || !strs.Any()) return;
@@ -116,7 +130,7 @@ namespace LeonTools
                 var toolItem = new ToolItemViewModel
                 {
                     FileName = realPath,
-                    Name = Path.GetFileNameWithoutExtension(realPath)
+                    Name = Path.GetFileNameWithoutExtension(str)
                 };
                 var icon = FileHelper.GetShortcurIcoFromFilePath(realPath);
                 if (icon != null)
@@ -152,6 +166,7 @@ namespace LeonTools
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             configPath = Path.Combine(System.Windows.Forms.Application.StartupPath, "config.json");
+            appConfigPath = Path.Combine(System.Windows.Forms.Application.StartupPath, "appConfig.json");
             if (File.Exists(configPath))
             {
                 try
@@ -166,9 +181,26 @@ namespace LeonTools
                 }
                 catch (Exception exception)
                 {
-                    System.Windows.MessageBox.Show($"未能正确载入配置文件({exception.Message})", "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    System.Windows.MessageBox.Show($"未能正确读取快捷方式文件({exception.Message})", "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
+            if (File.Exists(appConfigPath))
+            {
+                try
+                {
+                    AppConfig appConfig = PersistenceHelper.Load<AppConfig>(appConfigPath);
+                    if (appConfig.Width > 0 && appConfig.Height > 0)
+                    {
+                        this.Width = appConfig.Width;
+                        this.Height = appConfig.Height;
+                    }
+                }
+                catch (Exception exception)
+                {
+                    System.Windows.MessageBox.Show($"未能正确读取配置文件({exception.Message})", "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+            hasInited = true;
         }
 
         public void RemoveToolItem(ToolItemComponent toolItem)
@@ -179,6 +211,19 @@ namespace LeonTools
                 MainPanel.Children.Remove(item);
                 toolItemList.Remove(item);
                 Save();
+            }
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (hasInited)
+            {
+                AppConfig appConfig = new AppConfig()
+                {
+                    Width = e.NewSize.Width,
+                    Height = e.NewSize.Height
+                };
+                PersistenceHelper.Save(appConfig, appConfigPath);
             }
         }
     }

@@ -20,7 +20,10 @@ namespace LeonTools.Common
             {
                 var shell = new WshShell();
                 var wshShortcut = (IWshShortcut)shell.CreateShortcut(shortcut);
-                //return wshShortcut.TargetPath;
+                if (File.Exists(wshShortcut.TargetPath))
+                {
+                    return wshShortcut.TargetPath;
+                }
                 string fileName = Path.GetFileName(wshShortcut.TargetPath);
                 string path = wshShortcut.WorkingDirectory;
                 if (!Directory.Exists(path))

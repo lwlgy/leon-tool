@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\
+E:\Projects\LeonTools\LeonTools\LeonTools\obj\Release\
 LeonTools
 none
 false
-DEBUG;TRACE
+TRACE
 E:\Projects\LeonTools\LeonTools\LeonTools\App.xaml
 2772624616
 
-12-1067965172
-13-1579598747
+13-718500993
+13-870015073
 CustomerComponent\ToolItemComponent.xaml;View\MainView.xaml;
 
 False

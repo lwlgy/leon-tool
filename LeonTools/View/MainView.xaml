@@ -8,7 +8,7 @@
         WindowStartupLocation="CenterScreen"
         Closing="Window_Closing"
         Title="快速启动工具" Height="600" Width="800" DragEnter="MainPanel_OnDragEnter"
-               Drop="MainPanel_OnDrop" AllowDrop="True" Loaded="Window_Loaded">
+               Drop="MainPanel_OnDrop" AllowDrop="True" Loaded="Window_Loaded" SizeChanged="Window_SizeChanged">
     <WrapPanel Name="MainPanel"
                DragEnter="MainPanel_OnDragEnter"
                Drop="MainPanel_OnDrop"

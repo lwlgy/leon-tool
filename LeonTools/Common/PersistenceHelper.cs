@@ -10,9 +10,9 @@ namespace LeonTools.Common
 {
     public class PersistenceHelper
     {
-        public static void Save<T>(List<T> items, string saveTo)
+        public static void Save<T>(T items, string saveTo)
         {
-            string json = Newtonsoft.Json.JsonConvert.SerializeObject(items);
+            string json = JsonConvert.SerializeObject(items);
             using (StreamWriter sw = new StreamWriter(saveTo, false, Encoding.UTF8))
             {
                 sw.Write(json);

@@ -92,6 +92,7 @@
     <Compile Include="CustomerComponent\ToolItemComponent.xaml.cs">
       <DependentUpon>ToolItemComponent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\AppConfig.cs" />
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -13,13 +13,13 @@ namespace LeonTools.CustomerComponent
         public ToolItemComponent()
         {
             InitializeComponent();
-            this.Id = Guid.NewGuid().ToString();
+            Id = Guid.NewGuid().ToString();
         }
 
         public ToolItemComponent(ToolItemViewModel toolItem, MainView mainView) : this()
         {
             DataContext = toolItem;
-            this.parent = mainView;
+            parent = mainView;
         }
 
         public ToolItemViewModel GetToolItemViewModel()
@@ -37,7 +37,7 @@ namespace LeonTools.CustomerComponent
 
         private void miDelete_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (this.parent != null)
+            if (parent != null)
             {
                 parent.RemoveToolItem(this);
             }
