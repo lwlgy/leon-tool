@@ -1,11 +1,14 @@
-﻿<Window x:Class="LeonTools.MainWindow"
+﻿<Window x:Class="LeonTools.MainView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LeonTools"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" AllowDrop="True">
+        WindowStartupLocation="CenterScreen"
+        Closing="Window_Closing"
+        Title="快速启动工具" Height="600" Width="800" DragEnter="MainPanel_OnDragEnter"
+               Drop="MainPanel_OnDrop" AllowDrop="True" Loaded="Window_Loaded">
     <WrapPanel Name="MainPanel"
                DragEnter="MainPanel_OnDragEnter"
                Drop="MainPanel_OnDrop"

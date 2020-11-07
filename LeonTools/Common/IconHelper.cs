@@ -1,6 +1,13 @@
-﻿using System.Drawing;
+﻿using System;
+using System.ComponentModel;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Runtime.InteropServices;
+using System.Windows;
+using System.Windows.Interop;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace LeonTools.Common
 {
@@ -13,7 +20,36 @@ namespace LeonTools.Common
         /// <returns></returns>
         public static Icon FromByte(byte[] buffer)
         {
-            return Icon.FromHandle(new System.Drawing.Bitmap(new MemoryStream(buffer)).GetHicon());
+            using (MemoryStream ms = new MemoryStream(buffer))
+            {
+                using (Bitmap image = new Bitmap(ms))
+                {
+                    return Icon.FromHandle(image.GetHicon());
+
+                }
+            }
+        }
+
+        [DllImport("gdi32.dll", SetLastError = true)]
+        private static extern bool DeleteObject(IntPtr hObject);
+
+        public static ImageSource ToImageSource(this Icon icon)
+        {
+            Bitmap bitmap = icon.ToBitmap();
+            IntPtr hBitmap = bitmap.GetHbitmap();
+
+            ImageSource wpfBitmap = Imaging.CreateBitmapSourceFromHBitmap(
+                hBitmap,
+                IntPtr.Zero,
+                Int32Rect.Empty,
+                BitmapSizeOptions.FromEmptyOptions());
+
+            if (!DeleteObject(hBitmap))
+            {
+                throw new Win32Exception();
+            }
+
+            return wpfBitmap;
         }
 
         /// <summary>

@@ -23,32 +23,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6480259b-2073-4ce5-867d-a96106b935bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/LeonTools.sln.DotSettings.user" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LeonTools/Common/IconHelper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LeonTools/Consts.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LeonTools/CustomerComponent/ToolItem.xaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LeonTools/CustomerComponent/ToolItem.xaml.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LeonTools/obj/Debug/CustomerComponent/ToolItem.g.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LeonTools/obj/Debug/CustomerComponent/ToolItem.g.i.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LeonTools/bin/Debug/Interop.IWshRuntimeLibrary.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LeonTools/obj/Debug/CustomerComponent/ToolItem.baml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LeonTools/obj/Debug/MainWindow.baml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LeonTools/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LeonTools/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LeonTools/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LeonTools/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LeonTools/Common/FileHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LeonTools/Common/FileHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LeonTools/LeonTools.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/LeonTools/LeonTools.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LeonTools/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/LeonTools/MainWindow.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LeonTools/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LeonTools/MainWindow.xaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LeonTools/Model/ToolItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LeonTools/Model/ToolItem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LeonTools/bin/Debug/LeonTools.exe" beforeDir="false" afterPath="$PROJECT_DIR$/LeonTools/bin/Debug/LeonTools.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LeonTools/bin/Debug/LeonTools.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/LeonTools/bin/Debug/LeonTools.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LeonTools/obj/Debug/LeonTools.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/LeonTools/obj/Debug/LeonTools.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LeonTools/obj/Debug/LeonTools.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/LeonTools/obj/Debug/LeonTools.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LeonTools/obj/Debug/LeonTools.csproj.GenerateResource.cache" beforeDir="false" afterPath="$PROJECT_DIR$/LeonTools/obj/Debug/LeonTools.csproj.GenerateResource.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LeonTools/obj/Debug/LeonTools.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/LeonTools/obj/Debug/LeonTools.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LeonTools/obj/Debug/LeonTools.exe" beforeDir="false" afterPath="$PROJECT_DIR$/LeonTools/obj/Debug/LeonTools.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LeonTools/obj/Debug/LeonTools.g.resources" beforeDir="false" afterPath="$PROJECT_DIR$/LeonTools/obj/Debug/LeonTools.g.resources" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LeonTools/obj/Debug/LeonTools.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/LeonTools/obj/Debug/LeonTools.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LeonTools/obj/Debug/LeonTools_MarkupCompile.cache" beforeDir="false" afterPath="$PROJECT_DIR$/LeonTools/obj/Debug/LeonTools_MarkupCompile.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LeonTools/obj/Debug/LeonTools_MarkupCompile.lref" beforeDir="false" afterPath="$PROJECT_DIR$/LeonTools/obj/Debug/LeonTools_MarkupCompile.lref" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LeonTools/obj/Debug/MainWindow.baml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/LeonTools/obj/Debug/MainWindow.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LeonTools/obj/Debug/MainWindow.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LeonTools/obj/Debug/MainWindow.g.i.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LeonTools/obj/Debug/MainWindow.g.i.cs" afterDir="false" />
     </list>
@@ -57,8 +47,16 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Pull.Settings">
+    <option name="BRANCH" value="master" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/LeonTools/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/F32505C5-59F6-4436-9659-51ACD16EAF13/67/951afbe0/XamlReader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Projects/LeonTools/LeonTools/LeonTools/Common/FileHelper.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -66,13 +64,13 @@
         <option value="$PROJECT_DIR$/LeonTools/App.xaml" />
         <option value="$PROJECT_DIR$/LeonTools/Model/ToolGroup.cs" />
         <option value="$PROJECT_DIR$/LeonTools/Consts.cs" />
-        <option value="$PROJECT_DIR$/LeonTools/MainWindow.xaml" />
         <option value="$PROJECT_DIR$/LeonTools/Model/ToolItem.cs" />
         <option value="$PROJECT_DIR$/LeonTools/Common/IconHelper.cs" />
         <option value="$PROJECT_DIR$/LeonTools/Common/FileHelper.cs" />
         <option value="$PROJECT_DIR$/LeonTools/MainWindow.xaml.cs" />
         <option value="$PROJECT_DIR$/LeonTools/CustomerComponent/ToolItem.xaml.cs" />
         <option value="$PROJECT_DIR$/LeonTools/CustomerComponent/ToolItem.xaml" />
+        <option value="$PROJECT_DIR$/LeonTools/MainWindow.xaml" />
       </list>
     </option>
   </component>
@@ -92,6 +90,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="full.screen.before.presentation.mode" value="false" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -135,7 +134,7 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -162,26 +161,26 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="394" height="466" key="DebuggerActiveHint/0.0.2560.1400@0.0.2560.1400" timestamp="1603895056319" />
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1603932699922">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="2517" height="398" key="GridCell.Tab.0.bottom" timestamp="1604064602963">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1603932699922" />
-    <state width="2517" height="398" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1603895444847" />
-    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1603932699922">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="2517" height="398" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1604064602963" />
+    <state width="2517" height="398" key="GridCell.Tab.0.center" timestamp="1604064602963">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1603932699922" />
-    <state width="2517" height="398" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1603895444847" />
-    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1603932699922">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="2517" height="398" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1604064602963" />
+    <state width="2517" height="398" key="GridCell.Tab.0.left" timestamp="1604064602962">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1603932699922" />
-    <state width="2517" height="398" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1603895444847" />
-    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1603932699922">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="2517" height="398" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1604064602962" />
+    <state width="2517" height="398" key="GridCell.Tab.0.right" timestamp="1604064602963">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1603932699922" />
-    <state width="2517" height="398" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1603895444847" />
+    <state width="2517" height="398" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1604064602963" />
     <state width="1877" height="374" key="GridCell.Tab.1.bottom" timestamp="1603932278515">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -266,6 +265,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="641" y="196" key="RiderGenerateDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604035717170" />
+    <state x="1070" y="420" key="RollbackChangesDialog" timestamp="1604063961734">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1070" y="420" key="RollbackChangesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1604063961734" />
     <state x="587" y="256" width="1256" height="730" key="SettingsEditor" timestamp="1604036668921">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
