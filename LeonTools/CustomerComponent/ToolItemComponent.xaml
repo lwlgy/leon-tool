@@ -3,14 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:LeonTools.CustomerComponent"
-             xmlns:local1="clr-namespace:LeonTools.ViewModel"
              xmlns:local2="clr-namespace:LeonTools.Converter"
              Width="78"
              Height="110"
              Padding="0,10,0,0"
              Margin="5,10"
-             mc:Ignorable="d" MouseDoubleClick="UserControl_MouseDoubleClick">
+             mc:Ignorable="d" MouseDoubleClick="UserControl_MouseDoubleClick" MouseUp="UserControl_MouseUp">
     <UserControl.Resources>
         <local2:ByteListToImageConverter x:Key="iconConverter" />
         <Style x:Key="toolItemStyle" TargetType="Border">
@@ -22,7 +20,7 @@
                     <MultiTrigger.Setters>
                         <Setter Property="BorderThickness" Value="1"/>
                         <Setter Property="BorderBrush" Value="#eee" />
-                        <!--<Setter Property="Cursor" Value="Hand" />-->
+                        <Setter Property="Cursor" Value="Hand" />
                     </MultiTrigger.Setters>
                 </MultiTrigger>
                 <MultiTrigger>
@@ -32,7 +30,7 @@
                     <MultiTrigger.Setters>
                         <Setter Property="BorderThickness" Value="1"/>
                         <Setter Property="BorderBrush" Value="Transparent" />
-                        <!--<Setter Property="Cursor" Value="Arrow" />-->
+                        <Setter Property="Cursor" Value="Arrow" />
                     </MultiTrigger.Setters>
                 </MultiTrigger>
             </Style.Triggers>

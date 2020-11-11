@@ -1,7 +1,4 @@
-﻿using LeonTools.ViewModel;
-using System.Collections.Generic;
-
-namespace LeonTools.Model
+﻿namespace LeonTools.Model
 {
     public class AppConfig
     {

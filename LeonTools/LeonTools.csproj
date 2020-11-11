@@ -84,9 +84,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Common\ShortcutHelper.cs" />
+    <Compile Include="Common\FileDropHandler.cs" />
     <Compile Include="Common\FileHelper.cs" />
     <Compile Include="Common\IconHelper.cs" />
     <Compile Include="Common\PersistenceHelper.cs" />
+    <Compile Include="Common\SystemTrayHelper.cs" />
+    <Compile Include="Common\WpfHelper.cs" />
     <Compile Include="Consts.cs" />
     <Compile Include="Converter\ByteListToImageConverter.cs" />
     <Compile Include="CustomerComponent\ToolItemComponent.xaml.cs">

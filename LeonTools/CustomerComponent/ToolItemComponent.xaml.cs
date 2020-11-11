@@ -10,6 +10,7 @@ namespace LeonTools.CustomerComponent
     {
         private MainView parent;
         public string Id { get; set; }
+        public bool IsDragOver { get; set; }
         public ToolItemComponent()
         {
             InitializeComponent();
@@ -24,15 +25,12 @@ namespace LeonTools.CustomerComponent
 
         public ToolItemViewModel GetToolItemViewModel()
         {
-            return (ToolItemViewModel)this.DataContext;
+            return (ToolItemViewModel)DataContext;
         }
 
         private void UserControl_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (DataContext is ToolItemViewModel tvm && !string.IsNullOrWhiteSpace(tvm.FileName) && File.Exists(tvm.FileName))
-            {
-                Process.Start(tvm.FileName);
-            }
+
         }
 
         private void miDelete_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -40,6 +38,15 @@ namespace LeonTools.CustomerComponent
             if (parent != null)
             {
                 parent.RemoveToolItem(this);
+            }
+        }
+
+        private void UserControl_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (DataContext is ToolItemViewModel tvm && !string.IsNullOrWhiteSpace(tvm.FileName) && File.Exists(tvm.FileName))
+            {
+                Consts.MainView.HideToTaskbar();
+                Process.Start(tvm.FileName);
             }
         }
     }
