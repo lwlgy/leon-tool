@@ -43,6 +43,15 @@ namespace LeonTools.CustomerComponent
 
         private void UserControl_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+        }
+
+        private void UserControl_MouseRightButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void UserControl_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
             if (DataContext is ToolItemViewModel tvm && !string.IsNullOrWhiteSpace(tvm.FileName) && File.Exists(tvm.FileName))
             {
                 Consts.MainView.HideToTaskbar();

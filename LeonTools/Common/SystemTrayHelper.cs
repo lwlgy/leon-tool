@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LeonTools.View;
+using System;
 using System.Windows;
 using System.Windows.Forms;
 
@@ -39,8 +40,15 @@ namespace LeonTools.Common
                 notifyIcon.Dispose();
                 System.Windows.Application.Current.Shutdown(0);
             };
+            //系统设置
+            MenuItem configItem = new MenuItem("设置");
+            configItem.Click += (o, e) =>
+            {
+                SystemConfigView systemConfigView = new SystemConfigView();
+                systemConfigView.Show();
+            };
             //关联托盘控件
-            MenuItem[] childen = new MenuItem[] { open, exit };
+            MenuItem[] childen = new MenuItem[] { open, configItem, exit };
             notifyIcon.ContextMenu = new ContextMenu(childen);
 
             notifyIcon.MouseDoubleClick += new MouseEventHandler((o, e) =>

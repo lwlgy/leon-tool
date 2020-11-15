@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Interop;
 
 namespace LeonTools
@@ -51,12 +52,13 @@ namespace LeonTools
             {
                 try
                 {
-                    List<ToolItemViewModel> list = PersistenceHelper.Load<List<ToolItemViewModel>>(configPath);
+                    List<ToolItemViewModel> list = PersistenceHelper.Load<List<ToolItemViewModel>>(configPath).OrderBy(i => i.Index).ToList();
                     foreach (var item in list)
                     {
-                        ToolItemComponent toolItemControl = new ToolItemComponent(item, this);
+                        var toolItemControl = GenerateToolItemComponent(item);
                         MainPanel.Children.Add(toolItemControl);
                         toolItemList.Add(toolItemControl);
+
                     }
                 }
                 catch (Exception exception)
@@ -139,9 +141,10 @@ namespace LeonTools
                 {
                     toolItem.Icon = IconHelper.ToByte(icon);
                 }
-                ToolItemComponent toolItemControl = new ToolItemComponent(toolItem, this);
+                var toolItemControl = GenerateToolItemComponent(toolItem);
                 MainPanel.Children.Add(toolItemControl);
                 toolItemList.Add(toolItemControl);
+
             }
             Save();
         }
@@ -152,9 +155,23 @@ namespace LeonTools
             e.Cancel = true;
         }
 
+        private ToolItemComponent GenerateToolItemComponent(ToolItemViewModel toolItem)
+        {
+            ToolItemComponent toolItemControl = new ToolItemComponent(toolItem, this);
+            //toolItemControl.MouseLeftButtonDown += (o, ev) =>
+            //{
+            //    Cursor = Cursors.SizeWE;
+            //};
+            return toolItemControl;
+        }
+
         private void Save()
         {
             List<ToolItemViewModel> list = toolItemList.Select(i => (ToolItemViewModel)i.DataContext).ToList();
+            for (int i = 0; i < list.Count; i++)
+            {
+                list[i].Index = i;
+            }
             try
             {
                 PersistenceHelper.Save(list, configPath);

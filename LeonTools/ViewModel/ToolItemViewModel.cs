@@ -64,6 +64,18 @@ namespace LeonTools.ViewModel
             }
         }
 
+        private int index;
+
+        public int Index
+        {
+            get { return index; }
+            set
+            {
+                index = value;
+                RaisePropertyChanged("Index");
+            }
+        }
+
         #region INotifyPropertyChanged属性
         public event PropertyChangedEventHandler PropertyChanged;
         #endregion

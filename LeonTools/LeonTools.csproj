@@ -73,6 +73,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="View\SystemConfigView.xaml.cs">
+      <DependentUpon>SystemConfigView.xaml</DependentUpon>
+    </Compile>
     <Page Include="CustomerComponent\ToolItemComponent.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -84,6 +87,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Common\AutoStartHelper.cs" />
     <Compile Include="Common\ShortcutHelper.cs" />
     <Compile Include="Common\FileDropHandler.cs" />
     <Compile Include="Common\FileHelper.cs" />
@@ -101,6 +105,10 @@
       <DependentUpon>MainView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\SystemConfigView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ViewModel\ToolItemViewModel.cs" />
