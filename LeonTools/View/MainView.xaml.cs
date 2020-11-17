@@ -8,8 +8,10 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interop;
+using System.Windows.Media;
 
 namespace LeonTools
 {
@@ -158,12 +160,101 @@ namespace LeonTools
         private ToolItemComponent GenerateToolItemComponent(ToolItemViewModel toolItem)
         {
             ToolItemComponent toolItemControl = new ToolItemComponent(toolItem, this);
-            //toolItemControl.MouseLeftButtonDown += (o, ev) =>
-            //{
-            //    Cursor = Cursors.SizeWE;
-            //};
+            toolItemControl.MouseLeftButtonDown += ToolItemControl_MouseLeftButtonDown;
+            toolItemControl.MouseLeftButtonUp += ToolItemControl_MouseLeftButtonUp;
             return toolItemControl;
         }
+
+
+
+        #region 拖动相关
+        private bool isDraginig = false;
+        private ToolItemComponent draggingItem = null;
+        private ToolItemComponent draggingOverItem = null;
+        private void StartDragToolItem(ToolItemComponent item)
+        {
+            Cursor = Cursors.ScrollAll;
+            isDraginig = true;
+            draggingItem = item;
+        }
+
+        private void StopDragToolItem(Point location)
+        {
+            Cursor = Cursors.Arrow;
+            SetToolItemListDragOverToFalse();
+            isDraginig = false;
+            if (draggingItem != null && draggingOverItem != null)
+            {
+                var index = MainPanel.Children.IndexOf(draggingOverItem);
+                MainPanel.Children.Remove(draggingItem);
+                MainPanel.Children.Insert(index, GenerateToolItemComponent(draggingItem.ToolItemViewModel));
+            }
+            draggingItem = null;
+        }
+
+        private ToolItemComponent GetItemFromPoint(Point point)
+        {
+            return null;
+        }
+
+        private void ToolItemControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            StartDragToolItem(sender as ToolItemComponent);
+        }
+        private void ToolItemControl_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            //StopDragToolItem(e.GetPosition(this));
+        }
+
+        private void MainPanel_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            //StopDragToolItem(e.GetPosition(this));
+        }
+
+        private void Window_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            StopDragToolItem(e.GetPosition(this));
+        }
+
+        private void MainPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDraginig)
+            {
+                GetControlByMouseLocation(e);
+            }
+        }
+
+        private void GetControlByMouseLocation(MouseEventArgs e)
+        {
+            var item = VisualTreeHelper.HitTest(MainPanel, e.GetPosition(MainPanel));
+            if (item != null && item.VisualHit is Border border)
+            {
+                if (border != null && border.Parent is ToolItemComponent toolItem)
+                {
+                    SetToolItemListDragOverToFalse();
+                    draggingOverItem = toolItem;
+                    toolItem.IsDragOver = true;
+                }
+                else
+                {
+                    draggingOverItem = null;
+                }
+            }
+            else
+            {
+                draggingOverItem = null;
+            }
+        }
+
+        private void SetToolItemListDragOverToFalse()
+        {
+            foreach (var i in toolItemList)
+            {
+                i.IsDragOver = false;
+            }
+        }
+
+        #endregion
 
         private void Save()
         {

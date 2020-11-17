@@ -23,3 +23,4 @@ E:\Projects\LeonTools\LeonTools\LeonTools\obj\Release\LeonTools.csproj.CoreCompi
 E:\Projects\LeonTools\LeonTools\LeonTools\obj\Release\LeonTools.csproj.CopyComplete
 E:\Projects\LeonTools\LeonTools\LeonTools\obj\Release\LeonTools.exe
 E:\Projects\LeonTools\LeonTools\LeonTools\obj\Release\LeonTools.pdb
+E:\Projects\LeonTools\LeonTools\LeonTools\obj\Release\LeonTools.csprojAssemblyReference.cache

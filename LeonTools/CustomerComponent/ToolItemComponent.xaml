@@ -4,11 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local2="clr-namespace:LeonTools.Converter"
+             xmlns:local="clr-namespace:LeonTools.CustomerComponent"
              Width="78"
              Height="110"
              Padding="0,10,0,0"
              Margin="5,10"
-             mc:Ignorable="d" MouseLeftButtonUp="UserControl_MouseLeftButtonUp">
+             mc:Ignorable="d" MouseLeftButtonUp="UserControl_MouseLeftButtonUp" 
+             BorderThickness="1,0,0,0">
     <UserControl.Resources>
         <local2:ByteListToImageConverter x:Key="iconConverter" />
         <Style x:Key="toolItemStyle" TargetType="Border">
@@ -49,7 +51,7 @@
                 <MenuItem Header="删除" Click="miDelete_Click"/>
             </ContextMenu>
         </Border.ContextMenu>
-        <Border Margin="5" BorderThickness="1" >
+        <Border Margin="5" BorderThickness="3,0,0,0" Name="itemBorder" >
             <Border.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="删除" Click="miDelete_Click"/>

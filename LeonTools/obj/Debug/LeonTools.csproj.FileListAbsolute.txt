@@ -39,6 +39,6 @@ E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\View\MainView.baml
 E:\Projects\LeonTools\LeonTools\LeonTools\bin\Debug\Newtonsoft.Json.dll
 E:\Projects\LeonTools\LeonTools\LeonTools\bin\Debug\Newtonsoft.Json.xml
 E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\LeonTools.csproj.CopyComplete
-E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\LeonTools.csprojAssemblyReference.cache
 E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\View\SystemConfigView.g.cs
 E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\View\SystemConfigView.baml
+E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\LeonTools.csprojAssemblyReference.cache

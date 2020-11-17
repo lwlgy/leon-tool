@@ -73,6 +73,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Common\ComponentHelper.cs" />
     <Compile Include="View\SystemConfigView.xaml.cs">
       <DependentUpon>SystemConfigView.xaml</DependentUpon>
     </Compile>
