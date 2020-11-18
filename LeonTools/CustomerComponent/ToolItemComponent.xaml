@@ -10,7 +10,7 @@
              Padding="0,10,0,0"
              Margin="5,10"
              mc:Ignorable="d" MouseLeftButtonUp="UserControl_MouseLeftButtonUp" 
-             BorderThickness="1,0,0,0">
+             BorderThickness="1,0,0,0" MouseDoubleClick="UserControl_MouseDoubleClick_1">
     <UserControl.Resources>
         <local2:ByteListToImageConverter x:Key="iconConverter" />
         <Style x:Key="toolItemStyle" TargetType="Border">

@@ -1,6 +1,5 @@
 ﻿using LeonTools.ViewModel;
 using System;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Controls;
@@ -16,17 +15,20 @@ namespace LeonTools.CustomerComponent
 
         public bool IsDragOver
         {
-            get { return isDragOver; }
+            get
+            {
+                return isDragOver;
+            }
             set
             {
                 isDragOver = value;
                 if (value)
                 {
-                    this.itemBorder.BorderBrush = Brushes.Black;
+                    itemBorder.BorderBrush = Brushes.Black;
                 }
                 else
                 {
-                    this.itemBorder.BorderBrush = Brushes.Transparent;
+                    itemBorder.BorderBrush = Brushes.Transparent;
                 }
             }
         }
@@ -78,11 +80,16 @@ namespace LeonTools.CustomerComponent
 
         private void UserControl_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            //if (DataContext is ToolItemViewModel tvm && !string.IsNullOrWhiteSpace(tvm.FileName) && File.Exists(tvm.FileName))
-            //{
-            //    Consts.MainView.HideToTaskbar();
-            //    Process.Start(tvm.FileName);
-            //}
+            
+        }
+
+        private void UserControl_MouseDoubleClick_1(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (DataContext is ToolItemViewModel tvm && !string.IsNullOrWhiteSpace(tvm.FileName) && File.Exists(tvm.FileName))
+            {
+                Consts.MainView.HideToTaskbar();
+                Process.Start(tvm.FileName);
+            }
         }
     }
 }

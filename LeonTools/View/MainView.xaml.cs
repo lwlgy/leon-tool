@@ -27,7 +27,7 @@ namespace LeonTools
         public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
         private const int MY_HOTKEYID = 0x9999;
-        private List<ToolItemComponent> toolItemList = new List<ToolItemComponent>();
+        //private List<ToolItemComponent> toolItemList = new List<ToolItemComponent>();
 
         private string configPath;
         private string appConfigPath;
@@ -59,7 +59,7 @@ namespace LeonTools
                     {
                         var toolItemControl = GenerateToolItemComponent(item);
                         MainPanel.Children.Add(toolItemControl);
-                        toolItemList.Add(toolItemControl);
+                        //toolItemList.Add(toolItemControl);
 
                     }
                 }
@@ -127,7 +127,7 @@ namespace LeonTools
             if (strs == null || !strs.Any()) return;
             foreach (var str in strs)
             {
-                var findItem = toolItemList.Find(i => i.GetToolItemViewModel() != null && i.GetToolItemViewModel().FileName == str);
+                var findItem = MainPanel.Children.Cast<ToolItemComponent>().FirstOrDefault(i => i.GetToolItemViewModel() != null && i.GetToolItemViewModel().FileName == str);
                 if (findItem != null)
                 {
                     continue;
@@ -145,7 +145,7 @@ namespace LeonTools
                 }
                 var toolItemControl = GenerateToolItemComponent(toolItem);
                 MainPanel.Children.Add(toolItemControl);
-                toolItemList.Add(toolItemControl);
+                //toolItemList.Add(toolItemControl);
 
             }
             Save();
@@ -168,13 +168,13 @@ namespace LeonTools
 
 
         #region 拖动相关
-        private bool isDraginig = false;
+        private bool isDragging = false;
         private ToolItemComponent draggingItem = null;
         private ToolItemComponent draggingOverItem = null;
         private void StartDragToolItem(ToolItemComponent item)
         {
             Cursor = Cursors.ScrollAll;
-            isDraginig = true;
+            isDragging = true;
             draggingItem = item;
         }
 
@@ -182,19 +182,17 @@ namespace LeonTools
         {
             Cursor = Cursors.Arrow;
             SetToolItemListDragOverToFalse();
-            isDraginig = false;
+            isDragging = false;
             if (draggingItem != null && draggingOverItem != null)
             {
                 var index = MainPanel.Children.IndexOf(draggingOverItem);
                 MainPanel.Children.Remove(draggingItem);
                 MainPanel.Children.Insert(index, GenerateToolItemComponent(draggingItem.ToolItemViewModel));
+                draggingOverItem.IsDragOver = false;
+                draggingOverItem = null;
+                Save();
             }
             draggingItem = null;
-        }
-
-        private ToolItemComponent GetItemFromPoint(Point point)
-        {
-            return null;
         }
 
         private void ToolItemControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -218,7 +216,7 @@ namespace LeonTools
 
         private void MainPanel_MouseMove(object sender, MouseEventArgs e)
         {
-            if (isDraginig)
+            if (isDragging)
             {
                 GetControlByMouseLocation(e);
             }
@@ -227,30 +225,56 @@ namespace LeonTools
         private void GetControlByMouseLocation(MouseEventArgs e)
         {
             var item = VisualTreeHelper.HitTest(MainPanel, e.GetPosition(MainPanel));
-            if (item != null && item.VisualHit is Border border)
+            if (item != null && (item.VisualHit is Border) || (item.VisualHit is TextBlock))
             {
-                if (border != null && border.Parent is ToolItemComponent toolItem)
+                var border = item.VisualHit as Border;
+                var textBlock = item.VisualHit as TextBlock;
+                if (border != null || textBlock != null)
                 {
-                    SetToolItemListDragOverToFalse();
-                    draggingOverItem = toolItem;
-                    toolItem.IsDragOver = true;
+                    var toolItem = border == null ? GetToolItemComponent(textBlock) : GetToolItemComponent(border);
+                    if (toolItem != null && toolItem != draggingItem)
+                    {
+                        SetToolItemListDragOverToFalse();
+                        draggingOverItem = toolItem;
+                        toolItem.IsDragOver = true;
+                    }
+                    else
+                    {
+                        SetToolItemListDragOverToFalse();
+                        draggingOverItem = null;
+                    }
                 }
                 else
                 {
+                    SetToolItemListDragOverToFalse();
                     draggingOverItem = null;
                 }
             }
             else
             {
+                SetToolItemListDragOverToFalse();
                 draggingOverItem = null;
             }
         }
 
+        private ToolItemComponent GetToolItemComponent(FrameworkElement element)
+        {
+            if (element is ToolItemComponent toolItem)
+            {
+                return toolItem;
+            }
+            if (element.Parent == null || !(element.Parent is FrameworkElement))
+            {
+                return null;
+            }
+            return GetToolItemComponent((FrameworkElement)element.Parent);
+        }
+
         private void SetToolItemListDragOverToFalse()
         {
-            foreach (var i in toolItemList)
+            foreach (var i in MainPanel.Children)
             {
-                i.IsDragOver = false;
+                ((ToolItemComponent)i).IsDragOver = false;
             }
         }
 
@@ -258,7 +282,7 @@ namespace LeonTools
 
         private void Save()
         {
-            List<ToolItemViewModel> list = toolItemList.Select(i => (ToolItemViewModel)i.DataContext).ToList();
+            List<ToolItemViewModel> list = MainPanel.Children.Cast<ToolItemComponent>().Select(i => (ToolItemViewModel)i.DataContext).ToList();
             for (int i = 0; i < list.Count; i++)
             {
                 list[i].Index = i;
@@ -290,13 +314,20 @@ namespace LeonTools
 
         public void RemoveToolItem(ToolItemComponent toolItem)
         {
-            ToolItemComponent item = toolItemList.FirstOrDefault(i => i.Id == toolItem.Id);
-            if (item != null)
+            for (int i = 0; i < MainPanel.Children.Count; i++)
             {
-                MainPanel.Children.Remove(item);
-                toolItemList.Remove(item);
-                Save();
+                if (MainPanel.Children[i] is ToolItemComponent toolItem1 && toolItem1.Id == toolItem.Id)
+                {
+                    MainPanel.Children.Remove(toolItem1);
+                    Save();
+                    break;
+                }
             }
+        }
+
+        private List<ToolItemComponent> GetToolItemComponentsFromMainPanel()
+        {
+            return MainPanel.Children.Cast<ToolItemComponent>().ToList();
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)

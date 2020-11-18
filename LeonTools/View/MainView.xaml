@@ -12,5 +12,6 @@
     <WrapPanel Name="MainPanel"
                DragEnter="MainPanel_OnDragEnter"
                Drop="MainPanel_OnDrop"
-               AllowDrop="True" MouseLeftButtonUp="MainPanel_MouseLeftButtonUp" MouseMove="MainPanel_MouseMove" />
+               AllowDrop="True" MouseLeftButtonUp="MainPanel_MouseLeftButtonUp" MouseMove="MainPanel_MouseMove" >
+    </WrapPanel>
 </Window>
