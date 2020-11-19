@@ -4,6 +4,7 @@ using LeonTools.Model;
 using LeonTools.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -169,21 +170,35 @@ namespace LeonTools
 
         #region 拖动相关
         private bool isDragging = false;
+        private bool isStartDragging = false;
         private ToolItemComponent draggingItem = null;
         private ToolItemComponent draggingOverItem = null;
-        private void StartDragToolItem(ToolItemComponent item)
+        private Stopwatch dragStartTime = new Stopwatch();
+        public bool IsDragging
         {
-            Cursor = Cursors.ScrollAll;
-            isDragging = true;
+            get { return isDragging; }
+        }
+        private void StartMouseUp(ToolItemComponent item)
+        {
+            isStartDragging = true;
             draggingItem = item;
+            dragStartTime.Restart();
         }
 
-        private void StopDragToolItem(Point location)
+        private void StartDragging()
         {
+            isDragging = true;
+            Cursor = Cursors.ScrollAll;
+        }
+
+        public void StopDragToolItem()
+        {
+            isStartDragging = false;
             Cursor = Cursors.Arrow;
             SetToolItemListDragOverToFalse();
             isDragging = false;
-            if (draggingItem != null && draggingOverItem != null)
+            dragStartTime.Stop();
+            if (draggingItem != null && draggingOverItem != null && dragStartTime.ElapsedMilliseconds > Consts.DragTimeout)
             {
                 var index = MainPanel.Children.IndexOf(draggingOverItem);
                 MainPanel.Children.Remove(draggingItem);
@@ -197,7 +212,7 @@ namespace LeonTools
 
         private void ToolItemControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            StartDragToolItem(sender as ToolItemComponent);
+            StartMouseUp(sender as ToolItemComponent);
         }
         private void ToolItemControl_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -211,14 +226,18 @@ namespace LeonTools
 
         private void Window_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            StopDragToolItem(e.GetPosition(this));
+            StopDragToolItem();
         }
 
         private void MainPanel_MouseMove(object sender, MouseEventArgs e)
         {
-            if (isDragging)
+            if (isStartDragging)
             {
-                GetControlByMouseLocation(e);
+                if (dragStartTime.ElapsedMilliseconds > Consts.DragTimeout)
+                {
+                    StartDragging();
+                    GetControlByMouseLocation(e);
+                }
             }
         }
 
@@ -341,6 +360,14 @@ namespace LeonTools
                 };
                 PersistenceHelper.Save(appConfig, appConfigPath);
             }
+        }
+
+        private void Window_Deactivated(object sender, EventArgs e)
+        {
+        }
+
+        private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
         }
     }
 }

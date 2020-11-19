@@ -80,16 +80,17 @@ namespace LeonTools.CustomerComponent
 
         private void UserControl_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            
+            if (DataContext is ToolItemViewModel tvm && !string.IsNullOrWhiteSpace(tvm.FileName) && File.Exists(tvm.FileName) && !Consts.MainView.IsDragging)
+            {
+                Process.Start(tvm.FileName);
+                Consts.MainView.HideToTaskbar();
+                Consts.MainView.StopDragToolItem();
+            }
         }
 
         private void UserControl_MouseDoubleClick_1(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (DataContext is ToolItemViewModel tvm && !string.IsNullOrWhiteSpace(tvm.FileName) && File.Exists(tvm.FileName))
-            {
-                Consts.MainView.HideToTaskbar();
-                Process.Start(tvm.FileName);
-            }
+
         }
     }
 }

@@ -41,3 +41,4 @@ E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\LeonTools.csproj.CoreCompile
 E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\LeonTools.csproj.CopyComplete
 E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\LeonTools.exe
 E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\LeonTools.pdb
+E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\LeonTools.csprojAssemblyReference.cache
