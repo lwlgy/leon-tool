@@ -1,7 +1,6 @@
 D:\Projects\leon-tools\LeonTools\obj\Debug\LeonTools.csprojAssemblyReference.cache
 D:\Projects\leon-tools\LeonTools\obj\Debug\Interop.IWshRuntimeLibrary.dll
 D:\Projects\leon-tools\LeonTools\obj\Debug\LeonTools.csproj.ResolveComReference.cache
-D:\Projects\leon-tools\LeonTools\obj\Debug\MainWindow.g.cs
 D:\Projects\leon-tools\LeonTools\obj\Debug\App.g.cs
 D:\Projects\leon-tools\LeonTools\obj\Debug\LeonTools_MarkupCompile.cache
 D:\Projects\leon-tools\LeonTools\obj\Debug\LeonTools_MarkupCompile.lref
@@ -11,7 +10,6 @@ D:\Projects\leon-tools\LeonTools\bin\Debug\LeonTools.exe.config
 D:\Projects\leon-tools\LeonTools\bin\Debug\LeonTools.exe
 D:\Projects\leon-tools\LeonTools\bin\Debug\LeonTools.pdb
 D:\Projects\leon-tools\LeonTools\bin\Debug\Interop.IWshRuntimeLibrary.dll
-D:\Projects\leon-tools\LeonTools\obj\Debug\MainWindow.baml
 D:\Projects\leon-tools\LeonTools\obj\Debug\LeonTools.g.resources
 D:\Projects\leon-tools\LeonTools\obj\Debug\LeonTools.Properties.Resources.resources
 D:\Projects\leon-tools\LeonTools\obj\Debug\LeonTools.csproj.GenerateResource.cache
@@ -42,3 +40,13 @@ E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\LeonTools.csproj.CopyComplet
 E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\LeonTools.exe
 E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\LeonTools.pdb
 E:\Projects\LeonTools\LeonTools\LeonTools\obj\Debug\LeonTools.csprojAssemblyReference.cache
+D:\Projects\leon-tools\LeonTools\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\leon-tools\LeonTools\bin\Debug\Newtonsoft.Json.xml
+D:\Projects\leon-tools\LeonTools\obj\Debug\CustomerComponent\ToolItemComponent.g.cs
+D:\Projects\leon-tools\LeonTools\obj\Debug\View\MainView.g.cs
+D:\Projects\leon-tools\LeonTools\obj\Debug\View\SystemConfigView.g.cs
+D:\Projects\leon-tools\LeonTools\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Projects\leon-tools\LeonTools\obj\Debug\CustomerComponent\ToolItemComponent.baml
+D:\Projects\leon-tools\LeonTools\obj\Debug\View\MainView.baml
+D:\Projects\leon-tools\LeonTools\obj\Debug\View\SystemConfigView.baml
+D:\Projects\leon-tools\LeonTools\obj\Debug\LeonTools.csproj.CopyComplete

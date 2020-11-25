@@ -4,43 +4,34 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Controls;
 using System.Windows.Media;
+using LeonTools.Common;
 
 namespace LeonTools.CustomerComponent
 {
     public partial class ToolItemComponent : UserControl
     {
-        private MainView parent;
+        private readonly MainView parent;
         public string Id { get; set; }
-        private bool isDragOver;
+        private bool _isDragOver;
 
         public bool IsDragOver
         {
-            get
-            {
-                return isDragOver;
-            }
+            get => _isDragOver;
             set
             {
-                isDragOver = value;
-                if (value)
-                {
-                    itemBorder.BorderBrush = Brushes.Black;
-                }
-                else
-                {
-                    itemBorder.BorderBrush = Brushes.Transparent;
-                }
+                _isDragOver = value;
+                ItemBorder.BorderBrush = value ? Brushes.Black : Brushes.Transparent;
             }
         }
 
         public ToolItemViewModel ToolItemViewModel { get; private set; }
         public string Text { get; set; }
+
         public ToolItemComponent()
         {
             InitializeComponent();
 
             Id = Guid.NewGuid().ToString();
-
         }
 
         public ToolItemComponent(ToolItemViewModel toolItem, MainView mainView) : this()
@@ -53,19 +44,26 @@ namespace LeonTools.CustomerComponent
 
         public ToolItemViewModel GetToolItemViewModel()
         {
-            return (ToolItemViewModel)DataContext;
+            return (ToolItemViewModel) DataContext;
         }
 
         private void UserControl_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-
         }
 
         private void miDelete_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (parent != null)
+            parent?.RemoveToolItem(this);
+        }
+
+        private void miAdmin_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (DataContext is ToolItemViewModel tvm && !string.IsNullOrWhiteSpace(tvm.FileName) &&
+                File.Exists(tvm.FileName) && !Consts.MainView.IsDragging)
             {
-                parent.RemoveToolItem(this);
+                tvm.StartAsAdministrator();
+                Consts.MainView.HideToTaskbar();
+                Consts.MainView.StopDragToolItem();
             }
         }
 
@@ -75,22 +73,17 @@ namespace LeonTools.CustomerComponent
 
         private void UserControl_MouseRightButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-
         }
 
         private void UserControl_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (DataContext is ToolItemViewModel tvm && !string.IsNullOrWhiteSpace(tvm.FileName) && File.Exists(tvm.FileName) && !Consts.MainView.IsDragging)
+            if (DataContext is ToolItemViewModel tvm && !string.IsNullOrWhiteSpace(tvm.FileName) &&
+                File.Exists(tvm.FileName) && !Consts.MainView.IsDragging)
             {
                 Process.Start(tvm.FileName);
                 Consts.MainView.HideToTaskbar();
                 Consts.MainView.StopDragToolItem();
             }
-        }
-
-        private void UserControl_MouseDoubleClick_1(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-
         }
     }
 }

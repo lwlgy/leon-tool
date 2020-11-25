@@ -1,12 +1,24 @@
-﻿using IWshRuntimeLibrary;
+﻿using System.Diagnostics;
+using IWshRuntimeLibrary;
 using System.Drawing;
 using System.IO;
+using LeonTools.ViewModel;
 using File = System.IO.File;
 
 namespace LeonTools.Common
 {
     public static class FileHelper
     {
+        public static void StartAsAdministrator(this ToolItemViewModel tv)
+        {
+            var info = new ProcessStartInfo(tv.FileName)
+            {
+                Arguments = "1",
+                Verb = "runas"
+            };
+            Process.Start(info);
+        }
+
         public static string GetFileRealPath(string filePathOrShortcutPath)
         {
             return Path.GetExtension(filePathOrShortcutPath).ToUpper().Equals(".LNK")
@@ -19,11 +31,12 @@ namespace LeonTools.Common
             if (File.Exists(shortcut))
             {
                 var shell = new WshShell();
-                var wshShortcut = (IWshShortcut)shell.CreateShortcut(shortcut);
+                var wshShortcut = (IWshShortcut) shell.CreateShortcut(shortcut);
                 if (File.Exists(wshShortcut.TargetPath))
                 {
                     return wshShortcut.TargetPath;
                 }
+
                 string fileName = Path.GetFileName(wshShortcut.TargetPath);
                 string path = wshShortcut.WorkingDirectory;
                 if (!Directory.Exists(path))
@@ -34,6 +47,7 @@ namespace LeonTools.Common
                         return wshShortcut.TargetPath;
                     }
                 }
+
                 return Path.Combine(path, fileName);
             }
 
@@ -46,6 +60,7 @@ namespace LeonTools.Common
             {
                 return System.Drawing.Icon.ExtractAssociatedIcon(filepath);
             }
+
             return null;
         }
     }
